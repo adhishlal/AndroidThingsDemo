@@ -10,6 +10,9 @@ import com.google.android.things.pio.PeripheralManagerService;
 import java.io.IOException;
 
 
+//THIS DEMO PROJECT IS ACCORDING TO RASBERRY PI.
+// YOU JUST HAVE TO CHANGE THE PIN NAME FOR YOUR BOARD IF IT IS SOMETHING OTHER THAN RASBERRY PI.
+
 public class MainActivity extends Activity{
 
     Button button;
@@ -18,15 +21,14 @@ public class MainActivity extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         PeripheralManagerService service = new PeripheralManagerService();
 
 
         try {
-            ledGpio = service.openGpio("BCM21");
+            ledGpio = service.openGpio("BCM21"); //THIS IS AN INPUT PIN. SO WE ARE GIVING INPUT TO LED TO GLOW.
             ledGpio.setDirection(Gpio.DIRECTION_OUT_INITIALLY_LOW);
-            button = new Button("BCM6", Button.LogicState.PRESSED_WHEN_LOW);
+            button = new Button("BCM6", Button.LogicState.PRESSED_WHEN_LOW); //BCM6 IS OUTPUT PIN. SO WE ARE TAKING OUTPUT FROM BUTTON.
         }
         catch (IOException e)
         {
